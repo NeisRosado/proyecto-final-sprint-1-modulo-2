@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
 
     <main>
 
-    <figure class="figure">
-        <img class="figure__img" src="https://cdn-icons-png.flaticon.com/512/8508/8508680.png" alt="">
-    </figure>
+        <figure class="figure">
+            <img class="figure__img" src="https://cdn-icons-png.flaticon.com/512/8508/8508680.png" alt="">
+        </figure>
+        <div id="registration-form-container"></div>
+     
+        <form id="form" class="form">
 
-    <form id="form" class="form">
+            <input class="form__input" type="number" id="number" placeholder="Número de celular" />
 
-        <input class="form__input" type="number" id="number" placeholder="Número de celular"/>
-
-        <input class="form__input" type="password" id="password" placeholder="Contraseña" />
-        <div class="form__divButtons">
-            <button class="form__button form__button--signin" type="submit">Acceder</button>
-            <button class="form__button form__button--signup" type="submit">Registrarse</button>
-        </div>
-
-      </form>
+            <input class="form__input" type="password" id="password" placeholder="Contraseña" />
+            <div class="form__divButtons">
+                <button class="form__button form__button--signin" id="signin" type="submit">Acceder</button>
+                <button class="form__button form__button--signup" id="signup" type="submit">Registrarse</button>
+            </div>
+        </form>
 
     </main>
-    
-</body>
-</html>
 
+</body>
+
+</html>

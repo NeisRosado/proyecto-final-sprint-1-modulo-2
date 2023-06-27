@@ -1,2 +1,4 @@
 import "../styles/styles.scss";
-console.log ("Si funcionaaaa"); 
+import { printSignUp } from "./UI/printSignUp";
+
+//printSignUp();
