@@ -33,7 +33,6 @@
   "devDependencies": {
     "gh-pages": "^5.0.0"
   },
-  "description": "",
-
-  "homepage": "https://NeisRosado.github.io/proyecto-final-sprint-1-modulo-2"
+  "homepage": "https://NeisRosado.github.io/proyecto-final-sprint-1-modulo-2",
+  "description": ""
 }
