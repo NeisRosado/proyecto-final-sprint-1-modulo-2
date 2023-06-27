@@ -1,0 +1,66 @@
+{
+  "users": [
+      {
+          "id": 1,
+          "name": "Ana",
+          "phone_number": "3011111",
+          "password": "1234",
+          "profile_pic_url": "https://img.freepik.com/foto-gratis/flores-color-rosa-rosa_24837-301.jpg",
+          "is_online": false,
+          "about": "Soy programadora :D",
+          "last_time": "2023-06-12T12:45:34.000-04:00"
+      },
+      {
+          "id": 2,
+          "name": "Juan",
+          "phone_number": "234445",
+          "password": "12345",
+          "profile_pic_url": "https://thumbs.dreamstime.com/b/bal%C3%B3n-del-f%C3%BAtbol-o-de-f%C3%BAtbol-en-el-saque-de-centro-de-un-juego-con-puesta-del-sol-38302251.jpg",
+          "is_online": false,
+          "about": "Soy programador :D",
+          "last_time": "2023-06-13T12:45:34.000-04:00"
+      },
+      {
+          "id": 3,
+          "name": "Neis",
+          "phone_number": "123456",
+          "password": "012",
+          "profile_pic_url": "https://img.freepik.com/fotos-premium/flor-gerbera-color-rosa-fondo-mismo-color-espacio-texto_608742-12.jpg",
+          "is_online": false,
+          "about": "Disponible",
+          "last_time": "2023-06-12T12:45:34.000-04:00"
+      },
+      {
+          "id": 4,
+          "name": "Ximena",
+          "phone_number": "301404",
+          "password": "1037",
+          "profile_pic_url": "https://i.pinimg.com/236x/b8/87/21/b8872149137ef1da974f7731cf08b5d2--gify-glitter-graphics.jpg",
+          "is_online": false,
+          "about": "Estoy manejando",
+          "last_time": "2023-06-12T12:45:34.000-04:00"
+      }
+  ],
+  "messages" : [
+      {
+          "id_user_1": 1,
+          "id_user_2": 2,
+          "chat": [
+              {
+                  "send_by": 1,
+                  "date": "2023-06-12",
+                  "hour": "12:45:34",
+                  "message": "holiiii",
+                  "viewed": true
+              },
+              {
+                  "send_by": 2,
+                  "date": "2023-06-12",
+                  "hour": "12:45:34",
+                  "message": "holiiii que mas?",
+                  "viewed": false
+              }
+          ]
+      }
+  ]
+}
