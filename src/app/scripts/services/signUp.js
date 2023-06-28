@@ -1,7 +1,7 @@
 import axios from "axios";
 import { endpoints } from "./data.js";
 // import { registrationFormContainer, signUpButtom } from "../UI/domElements.js";
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert';
 import { nameInput, phoneNumberInput, passwordInput, imageUrlInput, phraseInput } from "../UI/domElements.js";
 
 export const handleSignUp = async (e) => {
@@ -18,11 +18,11 @@ export const handleSignUp = async (e) => {
   const userExists = users.some((user) => user.phone_number === phoneNumber);
 
   if (userExists) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'El número de celular ingresado ya está registrado.',
-    });
+    Swal({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'El número de celular ingresado ya está registrado.',
+      });
   } else {
     // Obtener el último ID utilizado y generar el nuevo ID en secuencia
     const lastUser = users[users.length - 1];
@@ -43,11 +43,12 @@ export const handleSignUp = async (e) => {
 
     try {
       await createUser(newUser);
-      Swal.fire({
+      swal({
         icon: 'success',
         title: '¡Usuario creado!',
-        text: 'El nuevo usuario ha sido creado exitosamente.',
+        text: 'El nuevo usuario ha sido creado exitosamente.'
       });
+      
       // Restablecer el formulario
       registrationFormContainer.innerHTML = '';
     } catch (error) {
@@ -75,4 +76,4 @@ export const createUser = async (user) => {
   }
 };
 
-// signUpButtom.addEventListener("click", handleSignUp) 
+
