@@ -1,81 +1,66 @@
-import axios from "axios";
 import Swal from 'sweetalert';
-import { endpoints } from "./data";
-import { signUpbtn, nameInput, phoneNumberInput, passwordInput, imageUrlInput, phraseInput } from "../UI/domElements";
+import { getFormValues, clearForm } from '../UI/domElements.js'; 
+import { endpoints } from "./data.js";
+import axios from 'axios';
+import { registrationFormContainer } from '../UI/domElements.js';
 
-document.addEventListener("DOMContentLoaded", () => {
-  signUpbtn.addEventListener("click", handleSignUp);
-});
+export const handleSignUp = async (event) => {
+  event.preventDefault();
 
-const handleSignUp = async (e) => {
-  e.preventDefault();
+  // Obteniene los valores de los campos del formulario
+  const { name, phoneNumber, password, profilePicUrl, about } = getFormValues();
 
-  const name = nameInput;
-  const phoneNumber = phoneNumberInput;
-  const password = passwordInput;
-  const imageUrl = imageUrlInput;
-  const phrase = phraseInput;
+  // Valida que todos los campos sean obligatorios
+  if ([name, phoneNumber, password, profilePicUrl, about].some(field => field === '')) {
+    Swal('Todos los campos son obligatorios');
+    return;
+  }
 
-  // Verificar si el número de celular existe en la lista de usuarios
-  const users = await getUsers();
-  const userExists = users.some((user) => user.phone_number === phoneNumber);
+  // Verifica si el número de celular ya existe en la lista de usuarios
+  const response = await axios.get(endpoints.urlUsers);
+  const users = response.data;
+  const existingUser = users.find(user => user.phone_number === phoneNumber);
+  if (existingUser) {
+    Swal('El número de celular ingresado ya está registrado');
+    return;
+  }
 
-  if (userExists) {
-    Swal({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'El número de celular ingresado ya está registrado.',
+  // Crea el objeto de usuario
+  const newUser = {
+    id: generateUserId(users), // Genera el ID secuencialmente
+    name,
+    phone_number: phoneNumber,
+    password,
+    profile_pic_url: profilePicUrl,
+    is_online: false,
+    about,
+    last_time: new Date().toISOString()
+  };
+
+  // Realiza la petición POST para crear el nuevo usuario
+
+  try {
+    await axios.post(endpoints.urlUsers, newUser);
+    Swal('El nuevo usuario fue creado exitosamente').then(() => {
+      clearForm(); // Limpiar el formulario después de mostrar la alerta
+      window.location.href = 'index.html'; // Redirige a la página de inicio de sesión
     });
-  } else {
-    // Obtener el último ID utilizado y generar el nuevo ID en secuencia
-    const lastUser = users[users.length - 1];
-    const lastId = lastUser ? lastUser.id : 0;
-    const newId = lastId + 1;
+  } catch (error) {
+    Swal('Ocurrió un error al crear el usuario');
+  }
+};
 
-    // Crear nuevo usuario mediante una petición POST
-    const newUser = {
-      id: newId,
-      name,
-      phone_number: phoneNumber,
-      password,
-      profile_pic_url: imageUrl,
-      is_online: false,
-      about: phrase,
-      last_time: new Date().toISOString(),
-    };
-
-    try {
-      await createUser(newUser);
-      Swal({
-        icon: 'success',
-        title: '¡Usuario creado!',
-        text: 'El nuevo usuario ha sido creado exitosamente.',
-      });
-
-      // Restablecer el formulario
-      registrationFormContainer.innerHTML = '';
-    } catch (error) {
-      console.error('Error al crear el nuevo usuario:', error);
+// Genera el ID secuencialmente
+const generateUserId = (users) => {
+  let maxId = 0;
+  users.forEach(user => {
+    const userId = parseInt(user.id);
+    if (userId > maxId) {
+      maxId = userId;
     }
-  }
+  });
+  return (maxId + 1).toString();
 };
 
-const getUsers = async () => {
-  try {
-    const response = await axios.get(endpoints.urlUsers);
-    return response.data;
-  } catch (error) {
-    console.error('Error al obtener la lista de usuarios:', error);
-    return [];
-  }
-};
-
-const createUser = async (user) => {
-  try {
-    await axios.post(endpoints.urlUsers, user);
-  } catch (error) {
-    console.error('Error al crear el nuevo usuario:', error);
-    throw error;
-  }
-};
-
+// click para registrar 
+registrationFormContainer.addEventListener('submit', handleSignUp);
