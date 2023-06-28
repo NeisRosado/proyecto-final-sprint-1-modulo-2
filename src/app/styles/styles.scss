@@ -1,6 +1,10 @@
 @import 'universals';
 @import 'variables';
 
+.login {
+    display: none;
+}
+
 .figure {
     display: flex;
     justify-content: center;
@@ -44,3 +48,120 @@
 .swal-button:first-child:hover{
     background-color: $color-secundary
 }
+
+.chat {
+    display: flex;
+    background-color: $color-light;
+
+    &__left {
+        width: 40%;
+        height: 50rem;
+        display: flex;
+        flex-direction: column;
+
+        &__main {
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+        }
+    }
+
+    &__right {
+        width: 60%;
+
+        &__header {
+            display: flex;
+            background-color: $color-primary;
+            border-left: 1px solid $color-dark;
+        }
+
+        &__name {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        &__main {
+            background-image: url("https://i.pinimg.com/originals/62/40/b6/6240b66d5c50c8661eee78b439a7d33c.jpg");
+            height: 80%;
+        }
+    }
+
+    &__figure {
+        background-color: $color-primary;
+        padding: 1rem;
+        &__img {
+            width: 50px;
+            height: 50px;
+            object-fit:cover;
+            border-radius: 50%;
+        }
+
+    }
+    &__search {
+        padding: 1rem;
+        display: flex;
+        justify-content: center;
+        &__icon {
+            display: flex;
+            width: 1rem;
+            padding: 1rem;
+            cursor: pointer;
+
+        }
+        &__input {
+            width: 32rem;
+            padding: 1rem;
+            border: none;
+            border-radius: 1.5rem;
+            display: flex;
+            text-align: center;
+            background-image: url("https://cdn-icons-png.flaticon.com/512/54/54481.png");
+            background-repeat: no-repeat;
+            background-position: left center;
+            background-position: 2rem;
+            background-size: 20px 20px;
+        }
+    }
+
+
+    &__history {
+        height: 50px;
+        background-color: white;
+        padding: 1rem;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        cursor: pointer;
+
+        &__all {
+            display: flex;
+            flex-direction: column;
+            white-space: nowrap;
+            overflow: hidden;
+            justify-content: center;
+            padding-bottom: 1rem;
+        }
+
+        &__hour {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        &__paragraph {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+    }
+
+    &__history:hover {
+        background-color: $color-light;
+    }
+}
+
+.chat__right__name p {
+    margin: 0;
+  }
+
