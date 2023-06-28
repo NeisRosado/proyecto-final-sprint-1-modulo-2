@@ -1,7 +1,7 @@
-import { getUsers } from "../services/signUp.js";
 import { signUpButtom } from "./domElements.js";
 import { registrationFormContainer } from "./domElements.js";
 import { initialFormContainer } from "./domElements.js";
+
 
 // pintar formulario
 export const printSignUp = (e) => {
