@@ -1,81 +1,62 @@
 import axios from "axios";
 import Swal from 'sweetalert';
-import { endpoints } from "./data";
-import { signUpbtn, nameInput, phoneNumberInput, passwordInput, imageUrlInput, phraseInput } from "../UI/domElements";
+import { registrationFormContainer } from "../UI/domElements.js";
+import { endpoints } from "./data.js";
 
-document.addEventListener("DOMContentLoaded", () => {
-  signUpbtn.addEventListener("click", handleSignUp);
-});
+export const handleSignUp = async (event) => {
+  event.preventDefault();
 
-const handleSignUp = async (e) => {
-  e.preventDefault();
+  const nameInput = document.getElementById("name");
+  const numberInput = document.getElementById("number");
+  const passwordInput = document.getElementById("password");
+  const imageUrlInput = document.getElementById("image-url");
+  const phraseInput = document.getElementById("phrase");
 
-  const name = nameInput;
-  const phoneNumber = phoneNumberInput;
-  const password = passwordInput;
-  const imageUrl = imageUrlInput;
-  const phrase = phraseInput;
+  const name = nameInput.value;
+  const number = numberInput.value;
+  const password = passwordInput.value;
+  const imageUrl = imageUrlInput.value;
+  const phrase = phraseInput.value;
 
-  // Verificar si el número de celular existe en la lista de usuarios
-  const users = await getUsers();
-  const userExists = users.some((user) => user.phone_number === phoneNumber);
-
-  if (userExists) {
-    Swal({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'El número de celular ingresado ya está registrado.',
-    });
+  if (password.length === 0 && number.length === 0) {
+    Swal('Todos los campos son obligatorios');
+    return;
   } else {
-    // Obtener el último ID utilizado y generar el nuevo ID en secuencia
-    const lastUser = users[users.length - 1];
-    const lastId = lastUser ? lastUser.id : 0;
-    const newId = lastId + 1;
-
-    // Crear nuevo usuario mediante una petición POST
-    const newUser = {
-      id: newId,
-      name,
-      phone_number: phoneNumber,
-      password,
-      profile_pic_url: imageUrl,
-      is_online: false,
-      about: phrase,
-      last_time: new Date().toISOString(),
+    if (number.length === 0) {
+      Swal('El campo del número está vacío');
+      return;
     };
-
-    try {
-      await createUser(newUser);
-      Swal({
-        icon: 'success',
-        title: '¡Usuario creado!',
-        text: 'El nuevo usuario ha sido creado exitosamente.',
-      });
-
-      // Restablecer el formulario
-      registrationFormContainer.innerHTML = '';
-    } catch (error) {
-      console.error('Error al crear el nuevo usuario:', error);
+    if (password.length === 0) {
+      Swal('El campo de la contraseña está vacío');
+      return;
     }
   }
-};
 
-const getUsers = async () => {
   try {
     const response = await axios.get(endpoints.urlUsers);
-    return response.data;
-  } catch (error) {
-    console.error('Error al obtener la lista de usuarios:', error);
-    return [];
-  }
-};
+    const users = response.data;
+    const numberExists = users.some(user => user.phone_number === number);
 
-const createUser = async (user) => {
-  try {
-    await axios.post(endpoints.urlUsers, user);
+    if (numberExists) {
+      Swal('El número de celular ingresado ya está registrado.');
+    } else {
+      const newUser = {
+        name: name,
+        phone_number: number,
+        password: password,
+        image_url: imageUrl,
+        phrase: phrase
+      };
+
+      await axios.post(endpoints.urlUsers, newUser);
+      Swal('El nuevo usuario ha sido creado exitosamente.');
+    }
   } catch (error) {
-    console.error('Error al crear el nuevo usuario:', error);
-    throw error;
+    console.error(error);
+    Swal('Ocurrió un error al crear el nuevo usuario. Por favor, intenta nuevamente.');
   }
-};
+}
+
+registrationFormContainer.addEventListener('submit', handleSignUp);
+
 
