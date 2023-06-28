@@ -1,9 +1,9 @@
 import { signUpbtn } from "./domElements.js";
 import { registrationFormContainer } from "./domElements.js";
+import { initialFormLogin} from "./domElements.js";
 
 export const printSignUp = (e) => {
   e.preventDefault();
-const initialFormLogin = document.getElementById("form_login");
   const registrationForm = document.createElement("form");
   registrationForm.classList.add("form");
    registrationForm.innerHTML = `
