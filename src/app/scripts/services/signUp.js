@@ -1,7 +1,7 @@
 import axios from "axios";
 import { endpoints } from "./data.js";
 // import { registrationFormContainer, signUpButtom } from "../UI/domElements.js";
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert';
 import { nameInput, phoneNumberInput, passwordInput, imageUrlInput, phraseInput } from "../UI/domElements.js";
 
 export const handleSignUp = async (e) => {
