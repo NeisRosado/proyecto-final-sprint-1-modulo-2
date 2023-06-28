@@ -1,17 +1,20 @@
 import axios from "axios";
-import { endpoints } from "./data.js";
-// import { registrationFormContainer, signUpButtom } from "../UI/domElements.js";
 import Swal from 'sweetalert';
-import { nameInput, phoneNumberInput, passwordInput, imageUrlInput, phraseInput } from "../UI/domElements.js";
+import { endpoints } from "./data";
+import { signUpbtn, nameInput, phoneNumberInput, passwordInput, imageUrlInput, phraseInput } from "../UI/domElements";
 
-export const handleSignUp = async (e) => {
+document.addEventListener("DOMContentLoaded", () => {
+  signUpbtn.addEventListener("click", handleSignUp);
+});
+
+const handleSignUp = async (e) => {
   e.preventDefault();
 
-  const name = nameInput.value;
-  const phoneNumber = phoneNumberInput.value;
-  const password = passwordInput.value;
-  const imageUrl = imageUrlInput.value;
-  const phrase = phraseInput.value;
+  const name = nameInput;
+  const phoneNumber = phoneNumberInput;
+  const password = passwordInput;
+  const imageUrl = imageUrlInput;
+  const phrase = phraseInput;
 
   // Verificar si el número de celular existe en la lista de usuarios
   const users = await getUsers();
@@ -19,10 +22,10 @@ export const handleSignUp = async (e) => {
 
   if (userExists) {
     Swal({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'El número de celular ingresado ya está registrado.',
-      });
+      icon: 'error',
+      title: 'Oops...',
+      text: 'El número de celular ingresado ya está registrado.',
+    });
   } else {
     // Obtener el último ID utilizado y generar el nuevo ID en secuencia
     const lastUser = users[users.length - 1];
@@ -43,12 +46,12 @@ export const handleSignUp = async (e) => {
 
     try {
       await createUser(newUser);
-      swal({
+      Swal({
         icon: 'success',
         title: '¡Usuario creado!',
-        text: 'El nuevo usuario ha sido creado exitosamente.'
+        text: 'El nuevo usuario ha sido creado exitosamente.',
       });
-      
+
       // Restablecer el formulario
       registrationFormContainer.innerHTML = '';
     } catch (error) {
@@ -57,7 +60,7 @@ export const handleSignUp = async (e) => {
   }
 };
 
-export const getUsers = async () => {
+const getUsers = async () => {
   try {
     const response = await axios.get(endpoints.urlUsers);
     return response.data;
@@ -67,7 +70,7 @@ export const getUsers = async () => {
   }
 };
 
-export const createUser = async (user) => {
+const createUser = async (user) => {
   try {
     await axios.post(endpoints.urlUsers, user);
   } catch (error) {
@@ -75,5 +78,4 @@ export const createUser = async (user) => {
     throw error;
   }
 };
-
 
