@@ -37,3 +37,10 @@
     }
 
 }
+
+.swal-button:first-child {
+    background-color: $color-secundary
+}
+.swal-button:first-child:hover{
+    background-color: $color-secundary
+}
