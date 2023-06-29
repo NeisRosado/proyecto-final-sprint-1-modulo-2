@@ -53,6 +53,11 @@
 .chat {
     display: flex;
 
+    &__figure {
+        display: flex;
+        justify-content: space-between;
+    }
+
     &__send {
         width: 3rem;
         height: 3rem;
