@@ -2,7 +2,7 @@ import axios from "axios";
 import Swal from 'sweetalert';
 import { form_login } from "../UI/domElements.js"
 import { endpoints } from "./data.js";
-import { showChatView } from "../UI/showChatView.js";
+import { showChatView } from "../UI/showViews.js";
 
 
 export const login = async (event) => {
@@ -32,7 +32,6 @@ export const login = async (event) => {
             if(user.password === password.value)
             {
                 Swal(`Bienvenido ${user.name}`);
-                localStorage.setItem('currentView', 'chat');
                 showChatView();
                 return;
             } else{
@@ -47,5 +46,8 @@ export const login = async (event) => {
 }
 
 form_login.addEventListener('submit', login);
+
+
+
 
 

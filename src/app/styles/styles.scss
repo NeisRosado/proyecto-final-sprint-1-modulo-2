@@ -49,9 +49,6 @@
     background-color: $color-secundary
 }
 
-#chat_container {
-    display: none;
-}
 
 .chat {
     display: flex;
@@ -243,7 +240,6 @@
 }
 
 .perfil {
-    display: none !important;
     background-color: $color-light;
     width: 40%;
     height: 40rem;
@@ -301,3 +297,13 @@ smal {
 p {
     font-weight: bold;
 }
+
+section {
+    display: none;
+}
+
+section.active {
+    display: block;
+}
+
+
