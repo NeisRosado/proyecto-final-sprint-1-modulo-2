@@ -1,33 +1,18 @@
-import { chat_home, homeSection } from "../UI/domElements";
-import { endpoints } from "./data";
 import axios from "axios";
-import { showSection } from "./viewPages";
+import { chatUserImage } from "../UI/domElements.js";
+import { endpoints } from "./data.js";
 
-// remplazar datos del contendeor home
-export const updateChatHome = async (event) => {
-  //  event.preventDefault();
-  
-    try {
-      const response = await axios.get(endpoints.urlUsers);
-      const users = response.data;
-  
-      const chatHistoryElements = document.querySelectorAll(".chat__history");
-  
-      users.forEach((user, index) => {
-        const chatHistory = chatHistoryElements[index];
-        const chatFigure = chatHistory.querySelector(".chat__figure__img");
-        const userName = chatHistory.querySelector(".chat__history__hour p");
-        const userLastTime = chatHistory.querySelector(".chat__history__hour small");
-        const chatHistoryParagraph = chatHistory.querySelector(".chat__history__paragraph");
-  
-        chatFigure.src = user.profile_pic_url;
-        chatFigure.alt = user.name;
-        userName.textContent = user.name;
-        userLastTime.textContent = user.last_time;
-        chatHistoryParagraph.textContent = user.about;
-      });
-    } catch (error) {
-      console.error("Error al obtener los datos de los usuarios:", error);
+export const updateUserImage = async (loggedInUserId) => {
+  try {
+    const response = await axios.get(endpoints.urlUsers);
+    const users = response.data;
+    const loggedInUser = users.find(user => user.id === loggedInUserId);
+    if (loggedInUser) {
+      chatUserImage.src = loggedInUser.profile_pic_url;
+    } else {
+      console.error("El usuario no ha iniciado sesión correctamente.");
     }
-  };
-  
+  } catch (error) {
+    console.error("Error al obtener los datos de los usuarios:", error);
+  }
+};
