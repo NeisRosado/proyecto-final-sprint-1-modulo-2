@@ -16,7 +16,7 @@ const fetchUsersFromEndpoint = async () => {
     console.error('Error al obtener los usuarios del endpoint', error);
   }
 };
-
+ 
 // Función para obtener los usuarios almacenados en el localStorage
 const getUsersFromLocalStorage = () => {
   const usersJson = localStorage.getItem('users');

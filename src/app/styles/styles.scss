@@ -2,9 +2,6 @@
 @import 'variables';
 @import 'mixing';
 
-.login {
-    display: none;
-}
 
 .figure {
     display: flex;
@@ -51,6 +48,7 @@
 .swal-button:first-child:hover {
     background-color: $color-secundary
 }
+
 
 .chat {
     display: flex;
@@ -242,13 +240,13 @@
 }
 
 .perfil {
-    display: none !important;
     background-color: $color-light;
     width: 40%;
     height: 40rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    
     &__header {
         background-color: $color-secundary;
         color: white;
@@ -299,3 +297,13 @@ smal {
 p {
     font-weight: bold;
 }
+
+section {
+    display: none;
+}
+
+section.active {
+    display: block;
+}
+
+
