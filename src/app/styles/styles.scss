@@ -251,7 +251,7 @@
 .perfil {
     background-color: $color-light;
     width: 40%;
-    height: 40rem;
+    height: 46rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -315,4 +315,7 @@ section.active {
     display: block;
 }
 
+.profile {
+    display: flex;
+}
 
