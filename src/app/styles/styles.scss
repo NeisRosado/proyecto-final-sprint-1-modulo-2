@@ -1,5 +1,6 @@
 @import 'universals';
 @import 'variables';
+@import 'mixing';
 
 // .login {
 //     display: none;
@@ -18,7 +19,7 @@
 .form {
     display: flex;
     flex-direction: column;
-    gap: 30px ;
+    gap: 30px;
     align-items: center;
     margin-top: 2rem;
 
@@ -26,6 +27,7 @@
         background-color: $color-primary;
         padding: 15px;
         border: 2px solid $color-dark;
+        outline: none;
         border-radius: 5px;
         width: 300px;
     }
@@ -45,19 +47,43 @@
 .swal-button:first-child {
     background-color: $color-secundary
 }
-.swal-button:first-child:hover{
+
+.swal-button:first-child:hover {
     background-color: $color-secundary
 }
 
 .chat {
     display: flex;
-    background-color: $color-light;
+
+    &__send {
+        width: 3rem;
+        height: 3rem;
+        border: none;
+        outline: none;
+        border-radius: 50%;
+        background-color: white;
+        background-image: url("https://cdn-icons-png.flaticon.com/512/3024/3024593.png ");
+        background-repeat: no-repeat;
+        background-position:center;
+        background-size: 20px 20px;
+        cursor: pointer;
+        position: absolute;
+        right: 2rem;
+    }
+
+    &__icons {
+        width: 1.5rem;
+        object-fit: contain;
+        cursor: pointer;
+    }
 
     &__left {
+        background-color: $color-light;
         width: 40%;
-        height: 50rem;
+        height: 46rem;
         display: flex;
         flex-direction: column;
+
 
         &__main {
             display: flex;
@@ -68,40 +94,92 @@
 
     &__right {
         width: 60%;
+        height: 52rem;
 
         &__header {
             display: flex;
             background-color: $color-primary;
             border-left: 1px solid $color-dark;
+            justify-content: space-between;
+            align-items: center;
+            padding-right: 1rem;
+        }
+
+        &__info {
+            display: flex;
         }
 
         &__name {
             display: flex;
             flex-direction: column;
             justify-content: center;
+
+            & p {
+                margin: 0;
+            }
         }
 
         &__main {
             background-image: url("https://i.pinimg.com/originals/62/40/b6/6240b66d5c50c8661eee78b439a7d33c.jpg");
-            height: 80%;
+            height: 60%;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
         }
+
+        &__write {
+            background-color: $color-primary;
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+
+            &__input {
+                width: 40rem;
+                padding: 1rem;
+                border: none;
+                outline: none;
+                border-radius: 1.5rem;
+                display: flex;
+            }
+        }
+    }
+
+    &__user {
+        background-color: white;
+        padding: 1rem;
+        width: 20rem;
+        border-radius: 0px 15px 15px 15px;
+    }
+
+    &__contact {
+        background-color: rgb(220, 248, 198);
+        padding: 1rem;
+        width: 20rem;
+        border-radius: 15px 0px 15px 15px;
+        margin-left: auto;
     }
 
     &__figure {
         background-color: $color-primary;
         padding: 1rem;
+
         &__img {
             width: 50px;
             height: 50px;
-            object-fit:cover;
+            object-fit: cover;
             border-radius: 50%;
         }
 
     }
+
     &__search {
         padding: 1rem;
         display: flex;
         justify-content: center;
+        position: relative;
+        align-items: center;
+
         &__icon {
             display: flex;
             width: 1rem;
@@ -109,10 +187,12 @@
             cursor: pointer;
 
         }
+
         &__input {
             width: 32rem;
             padding: 1rem;
             border: none;
+            outline: none;
             border-radius: 1.5rem;
             display: flex;
             text-align: center;
@@ -140,7 +220,7 @@
             white-space: nowrap;
             overflow: hidden;
             justify-content: center;
-            padding-bottom: 1rem;
+            gap: 0.3rem;
         }
 
         &__hour {
@@ -161,7 +241,61 @@
     }
 }
 
-.chat__right__name p {
-    margin: 0;
-  }
+.perfil {
+    display: none !important;
+    background-color: $color-light;
+    width: 40%;
+    height: 40rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    &__header {
+        background-color: $color-secundary;
+        color: white;
+        height: 5rem;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        padding: 3rem 1rem 0rem 1rem;
+    }
+    &__icons {
+        width: 0.5rem;
+        object-fit: contain;
+    }
+    &__input {
+        display: flex;
+        justify-content: center;
+    }
+    &__img {
+        width: 15rem;
+        height: 15rem;
+        background-color: $color-dark;
+        border-radius: 50%;
+        border: none;
+        outline: none;
+        display: flex;
+        text-align: center;
+    }
 
+    &__img::placeholder {
+        color: white;
+    }
+    &__edit {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__name{
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+}
+
+smal {
+    color: $color-dark;
+}
+p {
+    font-weight: bold;
+}
