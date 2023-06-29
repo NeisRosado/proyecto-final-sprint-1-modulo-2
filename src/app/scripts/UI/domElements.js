@@ -7,4 +7,8 @@ export const getFormValues = () => ({
 }); // valida los inputs del form
 export const getFormValue = (fieldId) => (fieldId && document.getElementById(fieldId)) ? document.getElementById(fieldId).value.trim() : ''; // valida los campos vacíos
 export const clearForm = () => document.querySelector('.form') ? document.querySelector('.form').reset() : null; // limpia el form
+export const chat_container = document.getElementById('chat_container');
+export const signInbtn = document.getElementById('signInbtn');
+export const loginForm = document.querySelector('.login');
+
 
