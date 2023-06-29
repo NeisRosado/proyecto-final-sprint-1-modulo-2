@@ -56,6 +56,10 @@
     &__figure {
         display: flex;
         justify-content: space-between;
+
+        &__img {
+            cursor: pointer;
+        }
     }
 
     &__send {
