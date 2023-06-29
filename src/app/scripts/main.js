@@ -2,7 +2,9 @@ import "../styles/styles.scss";
 import "./services/login.js"
 import "./services/signUp";
 import "./UI/printSignUp";
-import { viewChat, viewLogin, viewProfile } from "./UI/domElements";
+import "./UI/showViews"
+import { viewChat, viewLogin, viewProfile, outBtn,} from "./UI/domElements";
+import { showLoginView } from "./UI/showViews";
 const currentView = localStorage.getItem('currentView');
 
 //Check the current view and show only that
@@ -21,6 +23,10 @@ else if (currentView === 'profileView'){
     viewChat.classList.remove('active');
     viewProfile.classList.add('active');
 }
+
+outBtn.addEventListener("click", showLoginView,)
+
+
 
 
 
