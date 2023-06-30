@@ -1,10 +1,9 @@
 import "../styles/styles.scss";
 import "./services/login.js"
 import "./services/signUp";
-import "./UI/printSignUp";
 import "./UI/showViews";
 
-import { registerBtn, outBtnRegister, signUpbtn, viewRegister, viewChat, viewLogin, viewProfile, outBtn,imgProfile, btnBack} from "./UI/domElements";
+import { outBtnRegister, signUpbtn, viewRegister, viewChat, viewLogin, viewProfile, outBtn,imgProfile, btnBack} from "./UI/domElements";
 import { showChatView, showLoginView, showProfileView, showRegisterView} from "./UI/showViews";
 
 const currentView = localStorage.getItem('currentView');
@@ -40,7 +39,8 @@ imgProfile.addEventListener("click", showProfileView)
 btnBack.addEventListener("click", showChatView)
 signUpbtn.addEventListener("click", showRegisterView);
 outBtnRegister.addEventListener("click", showLoginView)
-// registerBtn.addEventListener("click", )
+
+
 
 
 

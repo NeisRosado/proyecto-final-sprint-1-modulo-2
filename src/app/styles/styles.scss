@@ -20,6 +20,10 @@
     align-items: center;
     margin-top: 2rem;
 
+    &__register {
+        margin-top: 5rem;
+    }
+
     &__input {
         background-color: $color-primary;
         padding: 15px;
