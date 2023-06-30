@@ -3,7 +3,7 @@ import "./services/login.js"
 import "./services/signUp";
 import "./UI/printSignUp";
 import "./UI/showViews"
-import { viewChat, viewLogin, viewProfile, outBtn,} from "./UI/domElements";
+import { viewChat, viewLogin, viewProfile, outBtn} from "./UI/domElements";
 import { showLoginView } from "./UI/showViews";
 const currentView = localStorage.getItem('currentView');
 
