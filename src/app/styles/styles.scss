@@ -83,7 +83,6 @@
         background-position:center;
         background-size: 20px 20px;
         cursor: pointer;
-        position: absolute;
         right: 2rem;
     }
 
@@ -91,12 +90,18 @@
         width: 1.5rem;
         object-fit: contain;
         cursor: pointer;
+
+        &__close {
+            width: 15px;
+            object-fit: contain;
+            cursor: pointer;
+        }
     }
 
     &__left {
         background-color: $color-light;
         width: 40%;
-        height: 46rem;
+        height: 100%;
         display: flex;
         flex-direction: column;
 
@@ -110,7 +115,6 @@
 
     &__right {
         width: 60%;
-        height: 52rem;
 
         &__header {
             display: flex;
@@ -137,7 +141,6 @@
 
         &__main {
             background-image: url("https://i.pinimg.com/originals/62/40/b6/6240b66d5c50c8661eee78b439a7d33c.jpg");
-            height: 60%;
             padding: 1rem;
             display: flex;
             flex-direction: column;
@@ -193,7 +196,7 @@
         padding: 1rem;
         display: flex;
         justify-content: center;
-        position: relative;
+        // position: relative;
         align-items: center;
 
         &__icon {
@@ -255,12 +258,18 @@
     &__history:hover {
         background-color: $color-light;
     }
+
+    &__searchmessage {
+        display: flex;
+        gap: 2rem;
+    }
 }
 
 .perfil {
+    position: fixed;
     background-color: $color-light;
     width: 40%;
-    height: 46rem;
+    height: 100%;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -324,7 +333,33 @@ section.active {
     display: block;
 }
 
-.profile {
+
+.sidebar {
+    position: fixed;
+    right: 0;
+    background-color: $color-light;
+    padding: 1rem;
     display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 35%;
+    height: 100%;
+
+    &__message {
+        background-color: white;
+        padding: 1rem;
+    }
+
+    &__active {
+        display: none;
+    }
 }
+
+.profile__active {
+    display: none;
+}
+
+
+
+
 

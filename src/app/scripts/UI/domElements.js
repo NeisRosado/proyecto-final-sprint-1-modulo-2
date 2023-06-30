@@ -14,10 +14,14 @@ export const viewChat = document.getElementById("view-chat");
 export const viewProfile = document.getElementById("view-profile");
 export const viewRegister = document.getElementById("view-register");
 export const outBtn = document.querySelector(".chat__out")
-export const imgProfile = document.getElementById("image-profile");
-export const btnBack = document.getElementById("btnBack");
 export const outBtnRegister = document.querySelector(".chat__registerback")
 export const registerBtn = document.getElementById('registerBtn');
+export const sidebarProfile = document.getElementById('sidebar__profile')
+export const showEditProfile = document.getElementById('showEditProfile')
+export const closeEditProfile = document.getElementById('btnBack')
+export const closeSearch = document.getElementById('closeSearch')
+export const searchMessageBtn = document.getElementById('searchMessageBtn')
+export const sidebar = document.getElementById('sidebar')
 
 
 
