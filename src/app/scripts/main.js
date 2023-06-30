@@ -4,7 +4,7 @@ import "./services/signUp";
 import "./UI/printSignUp";
 import "./UI/showViews";
 
-import { viewChat, viewLogin, viewProfile, outBtn,imgProfile, btnBack} from "./UI/domElements";
+import { viewChat, viewLogin, viewProfile, outBtn, imgProfile, btnBack} from "./UI/domElements";
 import { showChatView, showLoginView, showProfileView} from "./UI/showViews";
 
 const currentView = localStorage.getItem('currentView');

@@ -1,5 +1,4 @@
-import { registrationFormContainer, signUpbtn } from "./domElements.js";
-import { initialFormLogin} from "./domElements.js";
+import { registrationFormContainer, signUpbtn, initialFormLogin} from "./domElements.js";
 
 export const printSignUp = (e) => {
   e.preventDefault();

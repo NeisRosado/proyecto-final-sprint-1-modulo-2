@@ -1,9 +1,7 @@
 import axios from "axios";
 import { endpoints } from "./data.js";
 import { chatUserImage } from "../UI/domElements.js";
-import { fetchMessagesFromEndpoint } from "./chat.js";
-
-
+import { getChatHistory } from "./chatHistory.js";
 
  export const updateUserImage = async (loggedInUserId) => {
   try {
@@ -18,8 +16,4 @@ import { fetchMessagesFromEndpoint } from "./chat.js";
   }
 };
 
-// Llamada a updateUserImage después de obtener los mensajes del endpoint
-fetchMessagesFromEndpoint();
-
-
-
+getChatHistory();

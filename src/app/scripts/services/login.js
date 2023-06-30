@@ -4,7 +4,7 @@ import { form_login } from "../UI/domElements.js"
 import { endpoints } from "./data.js";
 import { updateUserImage } from "./home.js";
 import { showChatView } from "../UI/showViews.js";
-
+import { getChatHistory } from "./chatHistory.js";
 
 
 export const login = async (event) => {
@@ -28,20 +28,35 @@ export const login = async (event) => {
         const response = await axios.get(endpoints.urlUsers);
         const users = response.data;
         let numberExist = false;
-        let loggedInUserId = null; // Variable para almacenar el ID del usuario que inició sesión
-        users.forEach(user => {
+        let loggedInUserId = null;
+
+        for (let i = 0; i < users.length; i++) {
+            const user = users[i];
             if (user.phone_number === number.value) {
                 numberExist = true;
                 if (user.password === password.value) {
-                    loggedInUserId = user.id; // Almacenar el ID del usuario que inició sesión
+                    loggedInUserId = user.id;
                     Swal(`Bienvenido ${user.name}`);
                     updateUserImage(loggedInUserId);
                     showChatView();
+                    getChatHistory(loggedInUserId);
+                    try {
+                        const messagesResponse = await axios.get(endpoints.urlMessages);
+                        const messages = messagesResponse.data;
+
+                        const chatHistory = messages.filter(message =>
+                            (message.idUser1 === loggedInUserId || message.idUser2 === loggedInUserId)
+                        );
+
+                        console.log("Historial de chats:", chatHistory);
+                    } catch (error) {
+                        console.error("Error al obtener los mensajes:", error);
+                    } 
                 } else {
                     Swal('La contraseña ingresada es incorrecta');
                 }
             }
-        });
+        }
 
         if (!numberExist) {
             Swal('El número no existe');
@@ -52,5 +67,3 @@ export const login = async (event) => {
 }
 
 form_login.addEventListener('submit', login);
-
-
