@@ -53,6 +53,11 @@
 .chat {
     display: flex;
 
+    &__create {
+        display: flex;
+        gap: 1rem;
+    }
+
     &__figure {
         display: flex;
         justify-content: space-between;
