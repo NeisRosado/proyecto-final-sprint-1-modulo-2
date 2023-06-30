@@ -15,6 +15,10 @@ export const viewLogin = document.getElementById('view-login');
 export const viewChat = document.getElementById("view-chat");
 export const viewProfile = document.getElementById("view-profile");
 export const outBtn = document.querySelector(".chat__out")
+export const imgProfile = document.getElementById("image-profile");
+export const btnBack = document.getElementById("btnBack");
+
+
 
 
 
