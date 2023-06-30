@@ -1,5 +1,4 @@
-import { signUpbtn } from "./domElements.js";
-import { registrationFormContainer } from "./domElements.js";
+import { registrationFormContainer, signUpbtn } from "./domElements.js";
 import { initialFormLogin} from "./domElements.js";
 
 export const printSignUp = (e) => {
@@ -12,7 +11,7 @@ export const printSignUp = (e) => {
     <input class="form__input" type="number" id="phone_number" placeholder="Número de celular" />
     <input class="form__input" type="password" id="password" placeholder="Contraseña" />
     <input class="form__input" type="url" id="profile_pic_url" placeholder="URL de la imagen del usuario" />
-    <textarea class="form__input" id="phrase" placeholder="about"></textarea>
+    <textarea class="form__input" id="phrase" placeholder="About"></textarea>
     <div class="form__divButtons">
       <button class="form__button form__button--signup" id="signup" type="submit">Registrarse</button>
     </div>

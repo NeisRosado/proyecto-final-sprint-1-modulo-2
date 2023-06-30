@@ -2,9 +2,11 @@ import "../styles/styles.scss";
 import "./services/login.js"
 import "./services/signUp";
 import "./UI/printSignUp";
-import "./UI/showViews"
+import "./UI/showViews";
+
 import { viewChat, viewLogin, viewProfile, outBtn,imgProfile, btnBack} from "./UI/domElements";
 import { showChatView, showLoginView, showProfileView} from "./UI/showViews";
+
 const currentView = localStorage.getItem('currentView');
 
 //Check the current view and show only that
