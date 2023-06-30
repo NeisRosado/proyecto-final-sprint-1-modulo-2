@@ -2,7 +2,7 @@ import Swal from 'sweetalert';
 import { getFormValues, clearForm } from '../UI/domElements.js';
 import { endpoints } from "./data.js";
 import axios from 'axios';
-import { registrationFormContainer } from '../UI/domElements.js';
+import { registerBtn } from '../UI/domElements.js';
 
 // Función para obtener los usuarios del endpoint y guardarlos en el localStorage
 const fetchUsersFromEndpoint = async () => {
@@ -79,8 +79,8 @@ export const handleSignUp = async (event) => {
     const createdUser = response.data;
 
     // Agrega el nuevo usuario al array de usuarios en el localStorage
-    users.push(createdUser);
-    saveUsersToLocalStorage(users);
+    // users.push(createdUser);
+    // saveUsersToLocalStorage(users);
 
     Swal('El nuevo usuario fue creado exitosamente').then(() => {
      // Limpiar el formulario después de mostrar la alerta
@@ -97,4 +97,4 @@ export const handleSignUp = async (event) => {
 fetchUsersFromEndpoint();
 
 // click para registrar
-registrationFormContainer.addEventListener('submit', handleSignUp);
+registerBtn.addEventListener('click', handleSignUp);
