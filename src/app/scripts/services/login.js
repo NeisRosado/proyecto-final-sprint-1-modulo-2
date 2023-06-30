@@ -35,7 +35,7 @@ export const login = async (event) => {
                 if (user.password === password.value) {
                     loggedInUserId = user.id; // Almacenar el ID del usuario que inició sesión
                     Swal(`Bienvenido ${user.name}`);
-                    updateUserImage(loggedInUserId);
+                    // updateUserImage(loggedInUserId);
                     showChatView();
                 } else {
                     Swal('La contraseña ingresada es incorrecta');

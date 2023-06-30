@@ -30,10 +30,33 @@
 
         <section id="view-chat">
             <div class="chat">
+
+                <div class="perfil profile__active" id="sidebar__profile">
+                    <div class="perfil__header">
+                        <img id="btnBack" class="perfil__icons chat__icons"
+                            src="https://icon-library.com/images/white-back-icon/white-back-icon-7.jpg" alt="">
+                        <span>Perfil</span>
+                    </div>
+                    <div class="perfil__input">
+                        <input class="perfil__img" type="url" placeholder="Cambiar imagen">
+                    </div>
+                    <div class="perfil__name">
+                        <smal>Tu nombre</smal>
+                        <div class="perfil__edit">
+                            <span>Neis</span>
+                            <img class="chat__icons edit" src="   https://cdn-icons-png.flaticon.com/512/2985/2985043.png "
+                                alt="">
+                        </div>
+                    </div>
+    
+
+
+                </div>
+
                 <div class="chat__left">
                     <div class="chat__left__header">
                         <div class="chat__figure">
-                            <img class="chat__figure__img" id="image-profile"
+                            <img class="chat__figure__img" id="showEditProfile"
                                 src="https://images.unsplash.com/photo-1630567136459-7a8fa832c80e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHx8&w=1000&q=80"
                                 alt="">
                             <img class="chat__icons chat__out"
@@ -43,7 +66,6 @@
                         <form class="chat__search">
                             <input class="chat__search__input" type="search" id="mySearch"
                                 placeholder="Buscar o iniciar un nuevo chat">
-                            </span>
                         </form>
                     </div>
                     <div class="chat__left__main">
@@ -85,7 +107,8 @@
                         </div>
 
                         <div>
-                            <img class="chat__icons" src="https://cdn-icons-png.flaticon.com/512/54/54481.png" alt="">
+                            <img id="searchMessageBtn" class="chat__icons"
+                                src="https://cdn-icons-png.flaticon.com/512/54/54481.png" alt="">
                         </div>
                     </div>
 
@@ -119,79 +142,21 @@
                         <img class="chat__icons" src="   https://cdn-icons-png.flaticon.com/512/709/709950.png " alt="">
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <section id="view-profile">
-
-            <div class="profile">
-                <div class="perfil">
-                    <div class="perfil__header">
-                        <img id="btnBack" class="perfil__icons chat__icons"
-                            src="https://icon-library.com/images/white-back-icon/white-back-icon-7.jpg" alt="">
-                        <span>Perfil</span>
-                    </div>
-                    <div class="perfil__input">
-                        <input class="perfil__img" type="url" placeholder="Cambiar imagen">
-                    </div>
-                    <div class="perfil__name">
-                        <smal>Tu nombre</smal>
-                        <div class="perfil__edit">
-                            <span>Neis</span>
-                            <img class="chat__icons edit"
-                                src="   https://cdn-icons-png.flaticon.com/512/2985/2985043.png " alt="">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="chat__right">
-                    <div class="chat__right__header">
-
-                        <div class="chat__right__info">
-                            <div class="chat__figure">
-                                <img class="chat__figure__img"
-                                    src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                                    alt="">
-                            </div>
-                            <div class="chat__right__name">
-                                <p>Ana</p>
-                                <smal>en linea</smal>
-                            </div>
-                        </div>
-
-                        <div>
-                            <img class="chat__icons" src="https://cdn-icons-png.flaticon.com/512/54/54481.png" alt="">
-                        </div>
+                <div class="sidebar sidebar__active" id="sidebar">
+                    <div class="chat__searchmessage">
+                        <img class="chat__icons__close" id="closeSearch"
+                            src="   https://cdn-icons-png.flaticon.com/512/2961/2961937.png " alt="">
+                        <span>Buscar mensajes</span>
                     </div>
 
-                    <div class="chat__right__main">
-
-                        <div class="chat__user">
-                            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, velit illo, natus
-                                molestiae amet deserunt ullam obcaecati accusamus eaque tempora aperiam eligendi
-                                veritatis
-                                ipsam nostrum, optio itaque dolores ea deleniti.
-                            </span>
-                            <span>06:00 am</span>
-                        </div>
-
-                        <div class="chat__contact">
-                            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, velit illo, natus
-                                molestiae amet deserunt ullam obcaecati accusamus eaque tempora aperiam eligendi
-                                veritatis ipsam nostrum, optio itaque dolores ea deleniti.</span>
-                            <span>06:00 am</span>
-                        </div>
-
+                    <div class="sidebar__input">
+                        <input class="chat__search__input" type="search" id="searchMessageInput"
+                            placeholder="Buscar...">
                     </div>
 
-                    <div class="chat__right__write">
-                        <img class="chat__icons" src="https://cdn-icons-png.flaticon.com/512/3404/3404134.png" alt="">
-                        <img class="chat__icons" src="   https://cdn-icons-png.flaticon.com/512/876/876210.png " alt="">
-                        <form class="chat__search">
-                            <input class="chat__right__write__input" type="" placeholder="Escribe un mensaje">
-                            <button class="chat__send" id="sendMessage" type="submit"></button>
-                        </form>
-                        <img class="chat__icons" src="   https://cdn-icons-png.flaticon.com/512/709/709950.png " alt="">
+                    <div class="sidebar__message">
+                        Aqui van los mensajes encontrados
                     </div>
                 </div>
             </div>
@@ -201,8 +166,9 @@
         <section id="view-register">
             <form class="form form__register">
                 <div class="chat__create">
-                <img class="chat__icons chat__registerback" src="https://cdn-icons-png.flaticon.com/512/10405/10405584.png " alt="">
-                <h2>Crear Cuenta</h2>
+                    <img class="chat__icons chat__registerback"
+                        src="https://cdn-icons-png.flaticon.com/512/10405/10405584.png " alt="">
+                    <h2>Crear Cuenta</h2>
                 </div>
                 <input class="form__input" type="text" id="name" placeholder="Nombre" />
                 <input class="form__input" type="number" id="phone_number" placeholder="Número de celular" />
@@ -210,10 +176,12 @@
                 <input class="form__input" type="url" id="profile_pic_url" placeholder="URL de la imagen del usuario" />
                 <textarea class="form__input" id="phrase" placeholder="About"></textarea>
                 <div class="form__divButtons">
-                    <button class="form__button form__button--signup" id="registerBtn" type="submit">Registrarse</button>
+                    <button class="form__button form__button--signup" id="registerBtn"
+                        type="submit">Registrarse</button>
                 </div>
             </form>
         </section>
+
 
     </main>
 
