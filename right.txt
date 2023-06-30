@@ -8,52 +8,23 @@ export const getMessagesFromLocalStorage = () => {
   return messagesJson ? JSON.parse(messagesJson) : [];
 };
 
-// Generar el HTML del historial de mensajes en el lado izquierdo
+// Generar el HTML del historial de mensajes
 const generateConversationHTML = (conversation) => {
-  const { user_1_name, user_2_name, user_1_profile_url, user_2_profile_url, chat } = conversation;
-  const lastMessage = chat[chat.length - 1];
-
-  const formattedHour = new Date(`${lastMessage.date} ${lastMessage.hour}`).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
-  
-  const html = `
-    <div class="chat__left__main">
-      <div class="chat__history">
-        <img class="chat__figure__img" src="${user_2_profile_url}" alt="">
-        <div class="chat__history__all">
-          <div class="chat__history__hour">
-            <p>${user_2_name}</p>
-            <small>${formattedHour}</small>
-          </div>
-          <small class="chat__history__paragraph">${lastMessage.message}</small>
-        </div>
-      </div>
-    </div>
-  `;
-
-  return html;
+  // Código para generar el HTML de la conversación en el lado izquierdo
 };
-// Actualizar elementos del lado derecho con la información del chat seleccionado
-const updateRightChat = (conversation) => {
+
+// Generar el HTML de los mensajes en el lado derecho
+const generateChatHTML = (conversation) => {
   const { user_1_name, user_1_profile_url, chat } = conversation;
+  const lastMessage = chat[chat.length - 1];
 
   // Actualizar elementos del lado derecho (header)
   chatRightName[0].innerHTML = `<p>${user_1_name}</p>`;
   chatFigureImgRight[0].src = user_1_profile_url;
 
-// Actualizar elementos del lado derecho (mensajes)
-const chatRightMain = document.querySelector('.chat__right__main');
-chatRightMain.innerHTML = '';
-
-chat.forEach((message) => {
-  const { message: messageText, hour } = message;
-  const html = `
-    <div class="chat__user">
-      <span>${messageText}</span>
-      <span>${hour}</span>
-    </div>
-  `;
-  chatRightMain.innerHTML += html;
-});
+  // Actualizar elementos del lado derecho (mensajes)
+  chatUser[0].innerHTML = `<span>${lastMessage.message}</span><span>${lastMessage.hour}</span>`;
+  chatContact[0].innerHTML = `<span>${lastMessage.message}</span><span>${lastMessage.hour}</span>`;
 };
 
 // Mostrar todas las conversaciones del lado izquierdo
@@ -77,7 +48,7 @@ export const fetchMessagesFromEndpoint = async () => {
     // Mostrar el primer chat en el lado derecho
     if (messages.length > 0) {
       const firstConversation = messages[0];
-      updateRightChat(firstConversation);
+      generateChatHTML(firstConversation);
     }
 
   } catch (error) {
@@ -90,4 +61,3 @@ const saveMessagesToLocalStorage = (messages) => {
 };
 
 displayAllConversations();
-

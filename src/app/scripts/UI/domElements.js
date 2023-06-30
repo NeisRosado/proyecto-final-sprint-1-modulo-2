@@ -18,6 +18,18 @@ export const outBtn = document.querySelector(".chat__out")
 export const imgProfile = document.getElementById("image-profile");
 export const btnBack = document.getElementById("btnBack");
 
+// de chat de la derecha header
+export const chatRight = document.querySelectorAll('.chat__right');
+export const chatRightHeader = document.querySelectorAll('.chat__right__header');
+export const chatRightInfo = document.querySelectorAll('.chat__right__info');
+export const chatFigure = document.querySelectorAll('.chat__figure');
+export const chatFigureImgRight = document.querySelectorAll('.chat__figure__img');
+export const chatRightName = document.querySelectorAll('.chat__right__name');
+// lado derecho mensajes
+export const chatRightMain = document.querySelectorAll('.chat__right__main');
+export const chatUser = document.querySelectorAll('.chat__user');
+export const chatContact = document.querySelectorAll('.chat__contact');
+
 
 
 
