@@ -37,7 +37,7 @@ export const login = async (event) => {
                 if (user.password === password.value) {
                     loggedInUserId = user.id;
                     Swal(`Bienvenido ${user.name}`);
-                    // updateUserImage(loggedInUserId);
+                     updateUserImage(loggedInUserId);
                     showChatView();
                     getChatHistory(loggedInUserId);
                     try {
