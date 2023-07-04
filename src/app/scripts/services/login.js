@@ -2,7 +2,7 @@ import axios from "axios";
 import Swal from 'sweetalert';
 import { form_login } from "../UI/domElements.js"
 import { endpoints } from "./data.js";
-import { updateUserImage } from "./home.js";
+import { updateUserImage, setCurrentUser } from "./home.js";
 import { showChatView } from "../UI/showViews.js";
 import { getChatHistory } from "./chatHistory.js";
 
@@ -35,6 +35,7 @@ export const login = async (event) => {
             if (user.phone_number === number.value) {
                 numberExist = true;
                 if (user.password === password.value) {
+                    setCurrentUser(user);
                     loggedInUserId = user.id;
                     Swal(`Bienvenido ${user.name}`);
                      updateUserImage(loggedInUserId);
