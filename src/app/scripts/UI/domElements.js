@@ -51,9 +51,6 @@ export const chatRightName = document.querySelectorAll('.chat__right__name');
 export const chatRightMain = document.querySelectorAll('.chat__right__main');
 export const chatUser = document.querySelectorAll('.chat__user');
 export const chatContact = document.querySelectorAll('.chat__contact');
-
-
-
-
-
-
+export const profileEditName = document.querySelector('.perfil__edit').lastElementChild;
+export const profileCurrentName = document.querySelector('.perfil__edit').firstElementChild;
+export const profilePicture = document.querySelector('.perfil__img');
