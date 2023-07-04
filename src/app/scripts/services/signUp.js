@@ -1,100 +1,62 @@
 import Swal from 'sweetalert';
-import { getFormValues, clearForm } from '../UI/domElements.js';
+import { newUserForm } from '../UI/domElements.js';
 import { endpoints } from "./data.js";
 import axios from 'axios';
-import { registerBtn } from '../UI/domElements.js';
 
-// Función para obtener los usuarios del endpoint y guardarlos en el localStorage
-const fetchUsersFromEndpoint = async () => {
+
+const createUser = async (user) => {
   try {
-    const response = await axios.get(endpoints.urlUsers);
-    const users = response.data;
-
-    // Guarda los usuarios en el localStorage
-    saveUsersToLocalStorage(users);
+    const headers = {
+      'Content-Type': 'application/json'
+    };
+    const response = await axios.post(endpoints.urlUsers, user, { headers });
+    return response;
   } catch (error) {
-    console.error('Error al obtener los usuarios del endpoint', error);
+    console.error(error);
+    throw new Error('Oops, hubo un error al crear el usuario');
   }
 };
- 
-// Función para obtener los usuarios almacenados en el localStorage
-const getUsersFromLocalStorage = () => {
-  const usersJson = localStorage.getItem('users');
-  return usersJson ? JSON.parse(usersJson) : [];
+
+const checkPhoneNumberExists = async (phoneNumber) => {
+  try {
+    const response = await axios.get(`${endpoints.urlUsers}?phone_number=${phoneNumber}`);
+    return response.data.length > 0;
+  } catch (error) {
+    console.error(error);
+    throw new Error('Oops, hubo un error al verificar el número de teléfono');
+  }
 };
 
-// Función para guardar los usuarios en el localStorage
-const saveUsersToLocalStorage = (users) => {
-  const usersJson = JSON.stringify(users);
-  localStorage.setItem('users', usersJson);
-};
-
-// Genera el ID secuencialmente
-const generateUserId = (users) => {
-  let maxId = 0;
-  users.forEach(user => {
-    const userId = parseInt(user.id);
-    if (userId > maxId) {
-      maxId = userId;
-    }
-  });
-  return (maxId + 1).toString();
-};
-
-export const handleSignUp = async (event) => {
+newUserForm.addEventListener('submit', async (event) => {
   event.preventDefault();
+  const { name, phone_number, password, profile_pic_url, about } = event.target;
 
-  // Obtiene los valores de los campos del formulario
-  const { name, phoneNumber, password, profilePicUrl, about } = getFormValues();
-
-  // Valida que todos los campos sean obligatorios
-  if ([name, phoneNumber, password, profilePicUrl, about].some(field => field === '')) {
-    Swal('Todos los campos son obligatorios');
-    return;
-  }
-
-  // Verifica si el número de celular ya existe en el localStorage
-  const users = getUsersFromLocalStorage();
-  const existingUser = users.find(user => user.phone_number === phoneNumber);
-  if (existingUser) {
-    Swal('El número de celular ingresado ya está registrado');
-    return;
-  }
-
-  // Crea el objeto de usuario con ID secuencial
   const newUser = {
-    id: generateUserId(users), // Genera el ID secuencialmente
-    name,
-    phone_number: phoneNumber,
-    password,
-    profile_pic_url: profilePicUrl,
-    is_online: false,
-    about,
-    last_time: new Date().toISOString()
+    name: name.value,
+    phone_number: phone_number.value,
+    password: password.value,
+    profile_pic_url: profile_pic_url.value,
+    about: about.value
   };
 
   try {
-    // Realiza la solicitud POST para crear el nuevo usuario en el endpoint
-    const response = await axios.post(endpoints.urlUsers, newUser);
-    const createdUser = response.data;
+    const phoneNumberExists = await checkPhoneNumberExists(newUser.phone_number);
 
-    // Agrega el nuevo usuario al array de usuarios en el localStorage
-    // users.push(createdUser);
-    // saveUsersToLocalStorage(users);
-
-    Swal('El nuevo usuario fue creado exitosamente').then(() => {
-     // Limpiar el formulario después de mostrar la alerta
-      clearForm(); 
-     // Redirige a la página de inicio de sesión
-      window.location.href = 'index.html'; 
-    });
+    if (phoneNumberExists) {
+      Swal('El número de celular ya existe');
+    } else {
+      const response = await createUser(newUser);
+      if (response && response.status === 201) {
+        Swal('Usuario creado correctamente');
+      } else {
+        console.log('Oops, hubo un error al crear el usuario');
+      }
+    }
   } catch (error) {
-    Swal('Ocurrió un error al crear el usuario');
+    console.error(error);
+    console.log('Oops, hubo un error al crear el usuario');
   }
-};
 
-// Llama a fetchUsersFromEndpoint al iniciar la aplicación
-fetchUsersFromEndpoint();
+  newUserForm.reset();
+});
 
-// click para registrar
-registerBtn.addEventListener('click', handleSignUp);
