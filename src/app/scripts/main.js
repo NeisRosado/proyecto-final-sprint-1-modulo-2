@@ -1,10 +1,11 @@
 import "../styles/styles.scss";
 import "./services/login.js"
 import "./services/signUp";
+import "./services/profile"
 import "./UI/showViews";
 import "./UI/showSidebars"
 
-import { outBtnRegister, viewRegister, viewChat, viewLogin, outBtn,} from "./UI/domElements";
+import { outBtnRegister, viewRegister, viewChat, viewLogin, outBtn, profileEditName} from "./UI/domElements";
 import { showLoginView, showRegisterView} from "./UI/showViews";
 
 const currentView = localStorage.getItem('currentView');
