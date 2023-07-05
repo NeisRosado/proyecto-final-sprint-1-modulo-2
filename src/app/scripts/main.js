@@ -1,13 +1,15 @@
 import "../styles/styles.scss";
 import "./services/login.js"
 import "./services/signUp";
+import "./services/editeProfile.js"
 import "./UI/showViews";
 import "./UI/showSidebars"
-import axios from "axios";
-import { outBtnRegister, signUpbtn, viewRegister, viewChat, viewLogin, outBtn,} from "./UI/domElements";
+import { outBtnRegister, viewRegister, viewChat, viewLogin, outBtn, userName} from "./UI/domElements";
 import { showLoginView, showRegisterView} from "./UI/showViews";
 import { endpoints } from "./services/data";
 import { DateTime } from "luxon";
+
+
 
 const currentView = localStorage.getItem('currentView');
 
@@ -55,12 +57,13 @@ export const showSearchSideBar = () => {
 //   Mostrar y esconder sidebar de editar perfil
 
 const sidebarProfile = document.getElementById('sidebar__profile')
-const showEditProfile = document.getElementById('showEditProfile')
+const showEditProfile = document.getElementById('imgProfileUserLogged')
 const closeEditProfile = document.getElementById('btnBack')
 
 
   export const showProfileSidebar = () => {
     sidebarProfile.classList.remove('profile__active');
+    userName.textContent = localStorage.getItem("loggedInUserName");
   };
   export const closeProfileSidebar = () => {
     sidebarProfile.classList.add('profile__active');
@@ -70,20 +73,6 @@ const closeEditProfile = document.getElementById('btnBack')
   closeEditProfile.addEventListener('click', closeProfileSidebar);
 
 
-  // Funcion para obtener imagen de perfil del usuario que inicia sesion
-
-
-  // const imgProfile = document.querySelector('.chat__figure')
-
-  // const printImgProfile = (users, imgProfile) => {
-  //   imgProfile.innerHTML = "";
-  //   users.forEach((user) => {
-  //     imgProfile.innerHTML += `
-  //     <img class="chat__figure__img" id="showEditProfile"
-  //     src="${user.profile_pic_url}" alt="">
-  //     `;
-  //   });
-  // };
 
 
 
