@@ -80,7 +80,7 @@
         background-color: white;
         background-image: url("https://cdn-icons-png.flaticon.com/512/3024/3024593.png ");
         background-repeat: no-repeat;
-        background-position:center;
+        background-position: center;
         background-size: 20px 20px;
         cursor: pointer;
         right: 2rem;
@@ -273,7 +273,7 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    
+
     &__header {
         background-color: $color-secundary;
         color: white;
@@ -283,14 +283,17 @@
         align-items: center;
         padding: 3rem 1rem 0rem 1rem;
     }
+
     &__icons {
         width: 0.5rem;
         object-fit: contain;
     }
+
     &__input {
         display: flex;
         justify-content: center;
     }
+
     &__img {
         width: 15rem;
         height: 15rem;
@@ -305,11 +308,13 @@
     &__img::placeholder {
         color: white;
     }
+
     &__edit {
         display: flex;
         justify-content: space-between;
     }
-    &__name{
+
+    &__name {
         background-color: white;
         display: flex;
         flex-direction: column;
@@ -321,6 +326,7 @@
 smal {
     color: $color-dark;
 }
+
 p {
     font-weight: bold;
 }
@@ -359,10 +365,30 @@ section.active {
     display: none;
 }
 
+/* Estilos para dispositivos móviles */
+@media screen and (max-width: 365px) {
+    .form__input {
+        width: auto;
+        transition: width 0.3s ease;
+    }
 
+    .form__button {
+        width: auto;
+        transition: width 0.3s ease;
+    }
 
+    .chat {
 
+        &__left {
+            width: 100%;
+        }
 
+        &__right {
+            display: none;
+        }
+    }
 
-
-
+    .perfil {
+        width: 100%;
+    }
+}
