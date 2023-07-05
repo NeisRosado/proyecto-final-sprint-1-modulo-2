@@ -22,7 +22,7 @@ export const chatRight = document.querySelector('.chat__right')
 export const chatRightMain = document.querySelector('.chat__right__main')
 export const imgProfileUserLogged = document.getElementById('imgProfileUserLogged');
 export const userName = document.getElementById('userName');
-
+export const searchForm = document.getElementById("mySearch"); 
 
 
 // Edit profile
