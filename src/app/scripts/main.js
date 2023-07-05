@@ -3,7 +3,6 @@ import "./services/login.js"
 import "./services/signUp";
 import "./services/editeProfile.js"
 import "./UI/showViews";
-import "./UI/showSidebars"
 import { outBtnRegister, viewRegister, viewChat, viewLogin, outBtn, userName} from "./UI/domElements";
 import { showLoginView, showRegisterView} from "./UI/showViews";
 import { endpoints } from "./services/data";

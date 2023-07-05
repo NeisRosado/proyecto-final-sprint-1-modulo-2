@@ -1,11 +1,6 @@
 import axios from "axios";
 import Swal from "sweetalert";
-import {
-  form_login,
-  chatRight,
-  chatLeft,
-  imgProfileUserLogged,
-} from "../UI/domElements.js";
+import { form_login, chatRight, chatLeft, imgProfileUserLogged } from "../UI/domElements.js";
 import { endpoints } from "./data.js";
 import { showChatView } from "../UI/showViews.js";
 import { DateTime } from "luxon";
@@ -29,9 +24,8 @@ const printChats = async (idOtherUser, divMessages) => {
               </div>
           </div>
 
-          <div>
-              <img id="searchMessageBtn" class="chat__icons"
-                  src="https://cdn-icons-png.flaticon.com/512/54/54481.png" alt="">
+          <div id="searchMessageBtn">
+              <img class="chat__icons"src="https://cdn-icons-png.flaticon.com/512/54/54481.png" alt="">
           </div>
       </div>
 
@@ -44,10 +38,12 @@ const printChats = async (idOtherUser, divMessages) => {
           <img class="chat__icons" src="   https://cdn-icons-png.flaticon.com/512/876/876210.png " alt="">
           <form class="chat__search" id="formChat">
               <input class="chat__right__write__input" type="" placeholder="Escribe un mensaje" name="message">
-              <button class="chat__send" id="sendMessage" type="submit"></button>
+              <button id="sendMessage" type="submit"></button>
           </form>
           <img class="chat__icons" src="   https://cdn-icons-png.flaticon.com/512/709/709950.png " alt="">
       </div>`;
+
+      // Funcion para enviar mensajes
 
       const formChat = document.getElementById('formChat');
       formChat.addEventListener("submit", async (event) => {
@@ -137,14 +133,14 @@ export const printUsers = async (
           divAllMessages += `
           <div class="chat__contact">
             <span>${conver.message}</span>
-            <span>${timeMessageFormatted}</span>
+            <span class="chat__message__hour">${timeMessageFormatted}</span>
           </div>
           `;
         } else {
           divAllMessages += `
           <div class="chat__user">
             <span>${conver.message}</span>
-            <span>${timeMessageFormatted}</span>
+            <span class="chat__message__hour">${timeMessageFormatted}</span>
           </div>
           `;
         }
@@ -155,15 +151,15 @@ export const printUsers = async (
           <div class="chat__history__all">
             <div class="chat__history__hour">
               <p>${user.name}</p>
-              <small>${formattedTime}</small>
+              <small class="chat__message__hour ">${formattedTime}</small>
             </div>
-            <small class="chat__history__paragraph">${lastMessage}</small>
+              <small>${lastMessage}</small>
           </div>
         `;
 
       userDiv.addEventListener("click", () => {
-        localStorage.setItem("idUser2", userDiv.id);
-        printChats(userDiv.id, divAllMessages);
+      localStorage.setItem("idUser2", userDiv.id);
+      printChats(userDiv.id, divAllMessages);
       });
 
       chatLeft.appendChild(userDiv);
@@ -242,5 +238,3 @@ export const login = async (event) => {
 };
 
 form_login.addEventListener("submit", login);
-
-
