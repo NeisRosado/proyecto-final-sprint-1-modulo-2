@@ -1,12 +1,15 @@
 import "../styles/styles.scss";
 import "./services/login.js"
 import "./services/signUp";
-import "./services/profile"
+import "./services/editeProfile.js"
 import "./UI/showViews";
 import "./UI/showSidebars"
-
-import { outBtnRegister, viewRegister, viewChat, viewLogin, outBtn, profileEditName} from "./UI/domElements";
+import { outBtnRegister, viewRegister, viewChat, viewLogin, outBtn, userName} from "./UI/domElements";
 import { showLoginView, showRegisterView} from "./UI/showViews";
+import { endpoints } from "./services/data";
+import { DateTime } from "luxon";
+
+
 
 const currentView = localStorage.getItem('currentView');
 
@@ -54,19 +57,29 @@ export const showSearchSideBar = () => {
 //   Mostrar y esconder sidebar de editar perfil
 
 const sidebarProfile = document.getElementById('sidebar__profile')
-const showEditProfile = document.getElementById('showEditProfile')
+const showEditProfile = document.getElementById('imgProfileUserLogged')
 const closeEditProfile = document.getElementById('btnBack')
 
 
   export const showProfileSidebar = () => {
     sidebarProfile.classList.remove('profile__active');
+    userName.textContent = localStorage.getItem("loggedInUserName");
   };
   export const closeProfileSidebar = () => {
     sidebarProfile.classList.add('profile__active');
   };
 
-  showEditProfile.addEventListener('click', showProfileSidebar)
-  closeEditProfile.addEventListener('click', closeProfileSidebar)
+  showEditProfile.addEventListener('click', showProfileSidebar);
+  closeEditProfile.addEventListener('click', closeProfileSidebar);
+
+
+
+
+
+
+
+
+
 
 
 
