@@ -363,4 +363,32 @@ section.active {
 }
 
 
+/* Estilos para dispositivos móviles */
+@media screen and (max-width: 365px) {
+    .form__input {
+        width: auto;
+        transition: width 0.3s ease;
+    }
+
+    .form__button {
+        width: auto;
+        transition: width 0.3s ease;
+    }
+
+    .chat {
+
+        &__left {
+            width: 100%;
+        }
+
+        &__right {
+            display: none;
+        }
+    }
+
+    .perfil {
+        width: 100%;
+    }
+}
+
 

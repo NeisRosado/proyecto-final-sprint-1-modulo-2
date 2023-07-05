@@ -1,24 +1,43 @@
+import axios from "axios";
 import swal from "sweetalert";
+import { chatRight, chatLeft, imgProfileUserLogged, searchForm } from "../UI/domElements.js";
+import { endpoints } from "./data.js";
+import { DateTime } from "luxon";
+import { printUsers } from "./login.js";
 
 
-// Función para buscar usuarios por nombre
-export const searchUsers = (searchQuery, users) => {
-    const query = searchQuery.toLowerCase();
-    return users.filter((user) => user.name.toLowerCase().includes(query));
-  };
-  
-  // Función para manejar la búsqueda
-  export const handleSearch = (event, users, chatLeft, chatRight, imgProfileUserLogged) => {
-    const searchQuery = event.target.value.trim();
-    if (searchQuery === "") {
-      swal("La consulta de búsqueda está vacía");
-      printUsers(users, chatLeft, chatRight, imgProfileUserLogged);
-    } else {
-      const filteredUsers = searchUsers(searchQuery, users);
-      if (filteredUsers.length === 0) {
-        swal("No se encontraron contactos con ese nombre");
-      }
-      printUsers(filteredUsers, chatLeft, chatRight, imgProfileUserLogged);
+
+export const searchContacts = async (searchName) => {
+  try {
+    if (searchName.trim() === "") {
+      swal("Ingrese un término de búsqueda");
+      return;
     }
-  };
-  
+
+    const response = await axios.get(endpoints.urlUsers);
+    const users = response.data;
+
+    const searchNameLower = searchName.toLowerCase();
+    const usersFiltered = users.filter((user) => {
+      const lowerCaseName = user.name.toLowerCase();
+      return lowerCaseName.includes(searchNameLower);
+    });
+
+    if (usersFiltered.length === 0) {
+      swal("Contacto no encontrado");
+      return;
+    }
+
+    printUsers(usersFiltered, chatLeft, chatRight, imgProfileUserLogged);
+  } catch (error) {
+    console.error("Error al buscar contactos:", error);
+  }
+};
+
+
+const formatTimestamp = (timestamp) => {
+  const dateTime = DateTime.fromMillis(timestamp);
+  return dateTime.toFormat("HH:mm");
+};
+
+
