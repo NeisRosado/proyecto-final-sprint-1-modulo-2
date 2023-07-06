@@ -4,7 +4,9 @@ import { form_login, chatRight, chatLeft, imgProfileUserLogged, searchForm } fro
 import { endpoints } from "./data.js";
 import { showChatView } from "../UI/showViews.js";
 import { DateTime } from "luxon";
+import { showSearchSideBar } from "../main.js";
 import { searchContacts } from "./search.js";
+
 
 // Funcion para obtener y pintar chats de la izquierda y la derecha
 
@@ -45,6 +47,9 @@ const printChats = async (idOtherUser, divMessages) => {
       </div>`;
 
       // Funcion para enviar mensajes
+
+      const searchMessageBtn = document.getElementById('searchMessageBtn');
+      searchMessageBtn.addEventListener('click', showSearchSideBar);
 
       const formChat = document.getElementById('formChat');
       formChat.addEventListener("submit", async (event) => {

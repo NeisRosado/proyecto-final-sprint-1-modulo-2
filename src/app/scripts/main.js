@@ -38,7 +38,6 @@ outBtnRegister.addEventListener("click", showLoginView)
 // Mostrar y esconder sidebar de buscar mensajes
 
 const closeSearch = document.getElementById('closeSearch')
-const searchMessageBtn = document.getElementById('searchMessageBtn')
 const sidebar = document.getElementById('sidebar')
 
 
@@ -50,7 +49,7 @@ export const showSearchSideBar = () => {
     sidebar.classList.add('sidebar__active');
   };
 
-  searchMessageBtn.addEventListener('click', showSearchSideBar)
+  
   closeSearch.addEventListener('click', closeSearchSideBar)
 
 //   Mostrar y esconder sidebar de editar perfil
