@@ -1,13 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Chat</title>
 </head>
+
 <body>
-    <h1>Si funciona!! </h1>
-    <p>Estoy desplegado</p>
+
+    <main>
+
+        <section id="view-login" class="active">
+            <figure class="figure">
+                <img class="figure__img" src="https://cdn-icons-png.flaticon.com/512/8508/8508680.png" alt="">
+            </figure>
+            <form id="form_login" class="form">
+
+                <input class="form__input" type="number" name="number" placeholder="Número de celular" />
+                <input class="form__input" type="password" name="password" placeholder="Contraseña" />
+                <div class="form__divButtons">
+                    <button class="form__button form__button--signin" id="signInbtn" type="submit">Acceder</button>
+                    <button class="form__button form__button--signup" id="signUpbtn" type="button">Registrarse</button>
+                </div>
+
+            </form>
+
+        </section>
+
+        <section id="view-chat">
+            <div class="chat">
+
+                <div class="perfil profile__active" id="sidebar__profile">
+                    <div class="perfil__header">
+                        <img id="btnBack" class="perfil__icons chat__icons"
+                            src="https://icon-library.com/images/white-back-icon/white-back-icon-7.jpg" alt="">
+                        <span>Perfil</span>
+                    </div>
+                    <div class="perfil__input">
+                        <input class="perfil__img" type="url" placeholder="Cambiar imagen">
+                    </div>
+                    <div class="perfil__name">
+                        <smal>Tu nombre</smal>
+                        <div class="perfil__edit">
+                            <span id="userName">Neis</span>
+                            <img class="chat__icons edit" src="   https://cdn-icons-png.flaticon.com/512/2985/2985043.png "
+                                alt="">
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="chat__left">
+                    <div class="chat__left__header">
+                        <div class="chat__figure">
+
+                            <figure id="imgProfileUserLogged">
+                            </figure>
+
+                            <img class="chat__icons chat__out"
+                                src="   https://cdn-icons-png.flaticon.com/512/10405/10405584.png " alt="">
+                        </div>
+
+                        <form class="chat__search">
+                            <input class="chat__search__input" type="search" id="mySearch"
+                                placeholder="Buscar o iniciar un nuevo chat">
+                        </form>
+                    </div>
+                    <div class="chat__left__main">
+
+                    </div>
+                </div>
+
+                <div class="chat__right">
+                    <div class="chat__right__header">
+
+                        <div class="chat__right__info">
+                            <div class="chat__figure">
+                                <img class="chat__figure__img"
+                                    src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                                    alt="">
+                            </div>
+                            <div class="chat__right__name">
+                                <p>Ana</p>
+                                <smal>en linea</smal>
+                            </div>
+                        </div>
+
+                        <div>
+                            <img id="searchMessageBtn" class="chat__icons"
+                                src="https://cdn-icons-png.flaticon.com/512/54/54481.png" alt="">
+                        </div>
+                    </div>
+
+                    <div class="chat__right__main">
+                    </div>
+
+                    <div class="chat__right__write">
+                        <img class="chat__icons" src="https://cdn-icons-png.flaticon.com/512/3404/3404134.png" alt="">
+                        <img class="chat__icons" src="   https://cdn-icons-png.flaticon.com/512/876/876210.png " alt="">
+                        <form class="chat__search">
+                            <input class="chat__right__write__input" type="" placeholder="Escribe un mensaje">
+                            <button class="chat__send" id="sendMessage" type="submit"></button>
+                        </form>
+                        <img class="chat__icons" src="   https://cdn-icons-png.flaticon.com/512/709/709950.png " alt="">
+                    </div>
+                </div>
+
+                <div class="sidebar sidebar__active" id="sidebar">
+                    <div class="chat__searchmessage">
+                        <img class="chat__icons__close" id="closeSearch"
+                            src="   https://cdn-icons-png.flaticon.com/512/2961/2961937.png " alt="">
+                        <span>Buscar mensajes</span>
+                    </div>
+
+                    <div class="sidebar__input">
+                        <input class="chat__search__input" type="search" id="searchMessageInput"
+                            placeholder="Buscar...">
+                    </div>
+
+                    <div class="sidebar__message">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="view-register">
+            <form class="form form__register">
+                <div class="chat__create">
+                    <img class="chat__icons chat__registerback"
+                        src="https://cdn-icons-png.flaticon.com/512/10405/10405584.png " alt="">
+                    <h2>Crear Cuenta</h2>
+                </div>
+                <input class="form__input" type="text" name="name" placeholder="Nombre" />
+                <input class="form__input" type="number" name="phone_number" placeholder="Número de celular" />
+                <input class="form__input" type="password" name="password" placeholder="Contraseña" />
+                <input class="form__input" type="url" name="profile_pic_url" placeholder="URL de la imagen del usuario" />
+                <textarea class="form__input" name="about" placeholder="About"></textarea>
+                <div class="form__divButtons">
+                    <button class="form__button form__button--signup" id="registerBtn"
+                        type="submit">Registrarse</button>
+                </div>
+            </form>
+        </section>
+
+
+    </main>
+
 </body>
+
 </html>
+
 
