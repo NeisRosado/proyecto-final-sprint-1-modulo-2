@@ -105,6 +105,8 @@ export const printUsers = async (
   chatLeft.innerHTML = "";
   chatRight.innerHTML = "";
 
+  // Búsquedad de contactos 
+  
   searchForm.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
@@ -252,3 +254,5 @@ export const login = async (event) => {
 };
 
 form_login.addEventListener("submit", login);
+
+
