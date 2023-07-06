@@ -1,11 +1,11 @@
 import axios from "axios";
 import Swal from "sweetalert";
-import { form_login, chatRight, chatLeft, imgProfileUserLogged } from "../UI/domElements.js";
+import { form_login, chatRight, chatLeft, imgProfileUserLogged, searchForm } from "../UI/domElements.js";
 import { endpoints } from "./data.js";
 import { showChatView } from "../UI/showViews.js";
 import { DateTime } from "luxon";
 import { showSearchSideBar } from "../main.js";
-
+import { searchContacts } from "./search.js";
 
 
 // Funcion para obtener y pintar chats de la izquierda y la derecha
@@ -104,6 +104,15 @@ export const printUsers = async (
   `;
   chatLeft.innerHTML = "";
   chatRight.innerHTML = "";
+
+  searchForm.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      const searchName = searchForm.value.trim();
+      searchContacts(searchName);
+    }
+  });
+
   users.forEach(async (user) => {
     const userDiv = document.createElement("div");
     userDiv.classList.add("chat__history");
@@ -171,8 +180,7 @@ export const printUsers = async (
       chatLeft.appendChild(userDiv);
       localStorage.setItem("idUser2", userDiv.id);
       printChats(userDiv.id, divAllMessages);
-    }
-  
+    }  
   });
 };
 
